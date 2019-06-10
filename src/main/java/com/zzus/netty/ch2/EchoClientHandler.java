@@ -9,10 +9,15 @@ import io.netty.util.CharsetUtil;
 
 @ChannelHandler.Sharable
 public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
+    private String sendMessage;
+
+    public void setSendMessage(String message){
+        this.sendMessage = message;
+    }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx){
-        ctx.writeAndFlush(Unpooled.copiedBuffer("Netty rocks!", CharsetUtil.UTF_8));
+        ctx.writeAndFlush(Unpooled.copiedBuffer(sendMessage, CharsetUtil.UTF_8));
     }
 
 

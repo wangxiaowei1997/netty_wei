@@ -21,6 +21,8 @@ public class EchoClient {
 
     public void  start() throws Exception {
         EventLoopGroup group = new NioEventLoopGroup();
+        EchoClientHandler echoClientHandler = new EchoClientHandler();
+        echoClientHandler.setSendMessage("月薪五万带带我");
         try {
             Bootstrap b = new Bootstrap();
             b.group(group)
@@ -29,7 +31,7 @@ public class EchoClient {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new EchoClientHandler());
+                            ch.pipeline().addLast(echoClientHandler);
                         }
                     });
             ChannelFuture future = b.connect();
