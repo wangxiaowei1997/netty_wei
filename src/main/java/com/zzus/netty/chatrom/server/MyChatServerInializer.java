@@ -1,4 +1,4 @@
-package com.zzus.netty.chatrom;
+package com.zzus.netty.chatrom.server;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

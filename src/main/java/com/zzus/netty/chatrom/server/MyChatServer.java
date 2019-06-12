@@ -1,4 +1,4 @@
-package com.zzus.netty.chatrom;
+package com.zzus.netty.chatrom.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -25,6 +25,14 @@ public class MyChatServer {
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
+        }
+    }
+
+    public static void main(String[] s){
+        try {
+            new MyChatServer().run();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
